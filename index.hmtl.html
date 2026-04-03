@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costa Vicentina — Complete Location Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ocean:#173d56;--ocean-mid:#1e5f82;--sky:#3a8fb5;--sand:#f0e6d3;--sand-mid:#e0ceb3;--sand-dark:#c9b08a;--terra:#b85428;--terra-l:#d4703e;--green:#3a6b4a;--white:#fdfaf5;--ink:#1a1410;--ink-mid:#4a3e36;--ink-light:#8a7a6e;--border:rgba(26,20,16,.10);--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--ink);line-height:1.6;font-size:15px}
+nav{position:sticky;top:0;z-index:200;background:var(--ocean);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;gap:16px;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.nav-logo{font-family:'Lora',serif;font-size:1.05rem;font-weight:700;color:var(--sand);white-space:nowrap;text-decoration:none}
+.nav-scroll{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.nav-scroll::-webkit-scrollbar{display:none}
+.nav-scroll a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(240,230,211,.6);text-decoration:none;padding:5px 11px;border-radius:100px;white-space:nowrap;transition:.2s}
+.nav-scroll a:hover{color:#fff;background:rgba(255,255,255,.12)}
+.hero{position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--ocean)}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=1600&q=80') center 40%/cover;opacity:.5;animation:zoom 25s ease-in-out infinite alternate}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(23,61,86,.05) 0%,rgba(23,61,86,.5) 50%,rgba(23,61,86,.97) 100%)}
+.hero-body{position:relative;z-index:2;padding:0 6vw 64px;max-width:860px}
+.hero-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sand-dark);margin-bottom:16px}
+.hero h1{font-family:'Lora',serif;font-size:clamp(3.2rem,8vw,6.5rem);font-weight:700;color:#fff;line-height:.95;margin-bottom:22px}
+.hero h1 i{color:var(--sand-mid);font-style:italic}
+.hero-desc{font-size:1.1rem;color:rgba(240,230,211,.8);max-width:560px;line-height:1.75;font-weight:300;margin-bottom:28px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:7px 16px;border-radius:100px;font-size:.82rem;font-family:'Space Mono',monospace;backdrop-filter:blur(8px)}
+.what-is{display:grid;grid-template-columns:1fr 340px;background:var(--ocean)}
+.wi-text{padding:60px 6vw;color:#fff}
+.wi-text h2{font-family:'Lora',serif;font-size:clamp(1.6rem,2.5vw,2.1rem);font-weight:700;color:var(--sand);margin-bottom:18px;line-height:1.2}
+.wi-text p{font-size:1rem;line-height:1.8;color:rgba(240,230,211,.78);margin-bottom:13px}
+.wi-text p:last-child{margin-bottom:0}
+.wi-stats{background:rgba(0,0,0,.2);padding:40px 28px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.stat{border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:18px}
+.stat:last-child{border-bottom:none;padding-bottom:0}
+.stat-n{font-family:'Lora',serif;font-size:2.2rem;font-weight:700;color:var(--terra-l);line-height:1}
+.stat-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,230,211,.45);margin-top:4px}
+.stat-d{font-size:.86rem;color:rgba(240,230,211,.6);margin-top:4px;line-height:1.4}
+.sec{padding:72px 6vw}
+.sec-alt{background:var(--sand)}
+.sec-label{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sec-label::before{content:'';width:36px;height:2px;background:var(--terra);flex-shrink:0}
+.sec-label span{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra)}
+.sec-h{font-family:'Lora',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--ocean);margin-bottom:10px;line-height:1.15}
+.sec-sub{font-size:1.02rem;color:var(--ink-mid);max-width:680px;line-height:1.7;margin-bottom:44px}
+.map-box{border-radius:var(--r);overflow:hidden;border:2px solid var(--ocean);box-shadow:0 10px 40px rgba(23,61,86,.2)}
+.map-box iframe{display:block;width:100%;height:500px;border:none}
+.map-note{text-align:center;font-size:.84rem;color:var(--ink-light);font-style:italic;margin-top:13px}
+.rota-banner{background:var(--green);color:#fff;padding:52px 6vw}
+.rota-banner>h2{font-family:'Lora',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;color:#fff;margin-bottom:28px}
+.rota-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.rota-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:24px 20px}
+.rota-card h3{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.rota-card p{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:12px}
+.rtag{display:inline-block;background:rgba(255,255,255,.15);border-radius:100px;padding:3px 10px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:#fff;margin:2px}
+.rota-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;color:rgba(255,255,255,.85);font-size:.82rem;text-decoration:none;font-family:'Space Mono',monospace;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px}
+.rota-link:hover{color:#fff}
+.loc-grid{display:flex;flex-direction:column;gap:48px}
+.loc{display:grid;grid-template-columns:460px 1fr;border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid var(--border);transition:box-shadow .3s}
+.loc:hover{box-shadow:0 12px 48px rgba(0,0,0,.14)}
+.loc.flip{grid-template-columns:1fr 460px}
+.loc.flip .loc-img{order:2}.loc.flip .loc-body{order:1}
+.loc-img{position:relative;overflow:hidden;min-height:400px}
+.loc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+.loc:hover .loc-img img{transform:scale(1.04)}
+.loc-badge{position:absolute;top:16px;left:16px;background:var(--ocean);color:#fff;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:100px}
+.loc-km{position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.55);color:#fff;font-family:'Space Mono',monospace;font-size:10px;padding:5px 12px;border-radius:100px;backdrop-filter:blur(6px)}
+.loc-body{padding:38px 42px;display:flex;flex-direction:column}
+.loc-num{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.loc-name{font-family:'Lora',serif;font-size:clamp(1.6rem,2.2vw,2rem);font-weight:700;color:var(--ocean);line-height:1.1;margin-bottom:5px}
+.loc-region{font-size:.82rem;color:var(--ink-light);margin-bottom:18px}
+.loc-desc{font-size:.97rem;line-height:1.82;color:var(--ink-mid);margin-bottom:20px;flex:1}
+.loc-desc p{margin-bottom:11px}.loc-desc p:last-child{margin-bottom:0}
+.loc-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.chip{background:var(--sand);border-radius:100px;padding:5px 13px;font-size:.79rem;color:var(--ink-mid);display:flex;align-items:center;gap:5px}
+.loc-links{display:flex;flex-wrap:wrap;gap:9px;padding-top:18px;border-top:1px solid var(--border);margin-top:auto}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 17px;border-radius:100px;font-size:.81rem;font-weight:500;text-decoration:none;transition:all .2s;white-space:nowrap}
+.btn-p{background:var(--ocean);color:#fff}.btn-p:hover{background:var(--ocean-mid);transform:translateY(-2px)}
+.btn-o{border:1.5px solid var(--ocean);color:var(--ocean)}.btn-o:hover{background:var(--ocean);color:#fff;transform:translateY(-2px)}
+.btn-g{background:var(--sand);color:var(--ink-mid)}.btn-g:hover{background:var(--sand-mid);transform:translateY(-2px)}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.tip{background:#fff;border-radius:var(--r);padding:24px 20px;border:1px solid var(--border);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.tip-ico{font-size:1.7rem;margin-bottom:11px}
+.tip h3{font-family:'Lora',serif;font-size:1.02rem;font-weight:700;color:var(--ocean);margin-bottom:7px}
+.tip p{font-size:.88rem;color:var(--ink-mid);line-height:1.65}
+.tip a{color:var(--sky);text-decoration:none}.tip a:hover{text-decoration:underline}
+.reading{background:var(--ocean);padding:56px 6vw}
+.reading h2{font-family:'Lora',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;color:var(--sand);margin-bottom:26px}
+.reading-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.read-link{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:rgba(240,230,211,.8);font-size:.88rem;transition:.2s;display:flex;align-items:center;gap:9px}
+.read-link:hover{background:rgba(255,255,255,.14);color:#fff;transform:translateY(-2px)}
+.read-link span{font-size:1rem}
+footer{background:#0d2233;color:rgba(240,230,211,.35);text-align:center;padding:28px 5vw;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+footer a{color:var(--terra-l);text-decoration:none}
+@media(max-width:900px){
+  .what-is{grid-template-columns:1fr}.wi-stats{flex-direction:row;flex-wrap:wrap;padding:24px 5vw}
+  .stat{flex:1;min-width:110px;border-bottom:none;border-right:1px solid rgba(255,255,255,.1);padding:0 12px}.stat:last-child{border-right:none}
+  .loc,.loc.flip{grid-template-columns:1fr}
+  .loc.flip .loc-img,.loc.flip .loc-body{order:unset}
+  .loc-img{min-height:240px}.loc-body{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Costa Vicentina</a>
+  <div class="nav-scroll">
+    <a href="#mapa">🗺 Map</a>
+    <a href="#rota">Rota Vicentina</a>
+    <a href="#porto-covo">Porto Covo</a>
+    <a href="#milfontes">Milfontes</a>
+    <a href="#zambujeira">Zambujeira</a>
+    <a href="#odeceixe">Odeceixe</a>
+    <a href="#arrifana">Arrifana</a>
+    <a href="#bordeira">Bordeira</a>
+    <a href="#amado">Amado</a>
+    <a href="#sagres">Sagres</a>
+    <a href="#cabo">Cape St. Vincent</a>
+    <a href="#dicas">Tips</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-body">
+    <p class="hero-label">✦ Natural Park · Alentejo &amp; Algarve · Portugal</p>
+    <h1>Costa<br><i>Vicentina</i></h1>
+    <p class="hero-desc">The most pristine wild coastline in Western Europe. Golden cliffs, deserted beaches and a raw Atlantic — protected by law since 1995. A complete guide with every location explained in detail, with images and links.</p>
+    <div class="hero-pills">
+      <span class="pill">📍 Sines → Cape St. Vincent</span>
+      <span class="pill">🌊 105 km of protected coastline</span>
+      <span class="pill">🥾 750 km of trails (Rota Vicentina)</span>
+      <span class="pill">🏄 World-class waves</span>
+    </div>
+  </div>
+</header>
+
+<section class="what-is">
+  <div class="wi-text">
+    <h2>The Southwest Alentejo and Vicentine Coast Natural Park</h2>
+    <p>Founded in 1995, this natural park is the largest coastal park in Western Europe. It stretches 105 km between Sines and Cape St. Vincent, covering the municipalities of Sines, Odemira, Aljezur and Vila do Bispo.</p>
+    <p>The law prohibits any construction that alters the natural landscape — no beachfront resorts, no concrete. The result is beaches that look untouched for centuries: vast sandy shores bordered by vegetation, earth-toned dunes, dramatic cliffs and deserted coves.</p>
+    <p>But the park is not only coastline. Inland you'll find mountain lagoons, waterfalls, hilltop villages where time slows down and sweeping Alentejo plains. The local cuisine masterfully blends the flavours of the hills and the sea.</p>
+    <p>It is the absolute opposite of the commercial Algarve — and that is precisely what makes it unforgettable.</p>
+  </div>
+  <div class="wi-stats">
+    <div class="stat"><div class="stat-n">105 km</div><div class="stat-l">of protected coast</div><div class="stat-d">Between Sines and Cape St. Vincent</div></div>
+    <div class="stat"><div class="stat-n">1995</div><div class="stat-l">Park established</div><div class="stat-d">Largest coastal park in Western Europe</div></div>
+    <div class="stat"><div class="stat-n">750 km</div><div class="stat-l">of hiking trails</div><div class="stat-d">Rota Vicentina: Historic Way + Fishermen's Trail</div></div>
+    <div class="stat"><div class="stat-n">300+</div><div class="stat-l">sunny days/year</div><div class="stat-d">Sea temperature 17–21°C in summer</div></div>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="mapa">
+  <div class="sec-label"><span>Full Route</span></div>
+  <h2 class="sec-h">All locations on one map</h2>
+  <p class="sec-sub">North to south — click any point to open Google Maps with directions.</p>
+  <div class="map-box" style="border-radius:var(--r);overflow:hidden;border:2px solid var(--ocean);box-shadow:0 10px 40px rgba(23,61,86,.2)">
+    <div id="routemap" style="width:100%;height:520px;"></div>
+  </div>
+  <p class="map-note">Click any marker for details · Full route Porto Covo → Cape St. Vincent · ~120 km</p>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function(){
+    const map = L.map('routemap', { zoomControl: true, scrollWheelZoom: false })
+      .setView([37.35, -8.85], 9);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    const stops = [
+      { n:1, name:'Porto Covo',              lat:37.8493, lng:-8.7878, desc:'Northern gateway of the Costa Vicentina. Starting point of the Fishermen\'s Trail. Views of Ilha do Pessegueiro.' },
+      { n:2, name:'Vila Nova de Milfontes',  lat:37.7269, lng:-8.7852, desc:'The "Princess of the Alentejo". River Mira estuary, 16th-century castle, 3 beaches walkable from town.' },
+      { n:3, name:'Zambujeira do Mar',        lat:37.5257, lng:-8.7880, desc:'Black schist cliffs, cinematic setting. Host of MEO Sudowest Festival every August.' },
+      { n:4, name:'Odeceixe Beach',           lat:37.4420, lng:-8.7974, desc:'River Seixe meets the Atlantic on the same beach — a unique natural phenomenon. End of the Fishermen\'s Trail.' },
+      { n:5, name:'Arrifana Beach',           lat:37.2941, lng:-8.8639, desc:'Nestled between 60m black basalt cliffs. 8th-century Arab fortress ruins at the top. World-class surf.' },
+      { n:6, name:'Bordeira Beach',           lat:37.1988, lng:-8.8983, desc:'2.7 km long with 20m dunes. River lagoons of warm water. Pontal da Carrapateira trail (11 km).' },
+      { n:7, name:'Amado Beach',              lat:37.1672, lng:-8.9040, desc:'Portugal\'s surf cathedral. National championships held here. Remarkable geological cliff formations.' },
+      { n:8, name:'Sagres Fortress',          lat:37.0007, lng:-8.9482, desc:'Henry the Navigator\'s 15th-century nautical school. The 43m Wind Rose is an unsolved historical mystery.' },
+      { n:9, name:'Cape St. Vincent',         lat:37.0233, lng:-8.9944, desc:'Southwesternmost point of Continental Europe. 75m cliffs. The most spectacular sunset in Portugal.' }
+    ];
+
+    // Ocean colour palette
+    const ocean = '#173d56';
+    const terra  = '#b85428';
+
+    // Custom numbered marker
+    function makeIcon(num, last) {
+      const bg = last ? terra : ocean;
+      return L.divIcon({
+        className: '',
+        html: `<div style="
+          background:${bg};
+          color:#fff;
+          font-family:'Space Mono',monospace;
+          font-size:11px;
+          font-weight:700;
+          width:30px;height:30px;
+          border-radius:50%;
+          display:flex;align-items:center;justify-content:center;
+          border:2px solid #fff;
+          box-shadow:0 2px 8px rgba(0,0,0,.35);
+          cursor:pointer;
+        ">${num}</div>`,
+        iconSize: [30,30],
+        iconAnchor: [15,15],
+        popupAnchor: [0,-18]
+      });
+    }
+
+    const coords = stops.map(s => [s.lat, s.lng]);
+
+    // Draw route line
+    L.polyline(coords, {
+      color: ocean,
+      weight: 3.5,
+      opacity: 0.75,
+      dashArray: '8 5'
+    }).addTo(map);
+
+    // Add markers
+    stops.forEach((s, i) => {
+      const marker = L.marker([s.lat, s.lng], { icon: makeIcon(s.n, i === stops.length-1) }).addTo(map);
+      marker.bindPopup(`
+        <div style="font-family:'Inter',sans-serif;min-width:200px">
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:${terra};margin-bottom:4px">Stop ${s.n}</div>
+          <strong style="font-size:1rem;color:${ocean};display:block;margin-bottom:6px">${s.name}</strong>
+          <p style="font-size:.85rem;color:#4a3e36;line-height:1.5;margin:0">${s.desc}</p>
+          <a href="https://maps.google.com/?q=${encodeURIComponent(s.name)}+Portugal"
+             target="_blank"
+             style="display:inline-block;margin-top:10px;font-size:.78rem;color:${ocean};text-decoration:none;border-bottom:1px solid ${ocean}">
+            Open in Google Maps →
+          </a>
+        </div>
+      `, { maxWidth: 260 });
+    });
+
+    map.fitBounds(L.latLngBounds(coords), { padding: [30,30] });
+  })();
+  </script>
+</section>
+
+<section class="rota-banner" id="rota">
+  <h2>🥾 The Rota Vicentina — hiking along the coast</h2>
+  <div class="rota-cards">
+    <div class="rota-card">
+      <h3>Fishermen's Trail</h3>
+      <p>The most iconic trail. It connects Porto Covo to Odeceixe along ~80 km, hugging the coastline via the same paths local fishermen used to reach the beaches. Breathtaking views around every bend.</p>
+      <span class="rtag">~80 km</span><span class="rtag">Porto Covo → Odeceixe</span><span class="rtag">5–7 days</span>
+      <br><a class="rota-link" href="https://rotavicentina.com/en/fishermens-trail/" target="_blank">→ rotavicentina.com</a>
+    </div>
+    <div class="rota-card">
+      <h3>Historic Way</h3>
+      <p>The longest route, at ~230 km from Santiago do Cacém to Cape St. Vincent. It crosses the interior of the Natural Park through mountain villages, Alentejo plains and fragrant scrublands before reaching the sea.</p>
+      <span class="rtag">~230 km</span><span class="rtag">Santiago do Cacém → Cape</span><span class="rtag">12–15 days</span>
+      <br><a class="rota-link" href="https://rotavicentina.com/en/historical-way/" target="_blank">→ rotavicentina.com</a>
+    </div>
+    <div class="rota-card">
+      <h3>Day Circular Walks</h3>
+      <p>For those with just one day: Almograve Dunes Trail, Pontal da Carrapateira, Cordoama Trail, Hidden Lakes in Aljezur. Each 8–15 km, no special transport needed.</p>
+      <span class="rtag">8–15 km</span><span class="rtag">Various starting points</span><span class="rtag">1 day</span>
+      <br><a class="rota-link" href="https://rotavicentina.com/en/circular-routes/" target="_blank">→ rotavicentina.com</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-label"><span>Locations in Detail</span></div>
+  <h2 class="sec-h">The 9 places you must visit</h2>
+  <p class="sec-sub">North to south — each location with its story, what to see, what to do and useful direct links.</p>
+  <div class="loc-grid">
+
+    <!-- PORTO COVO -->
+    <div class="loc" id="porto-covo">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Porto_Covo_-_Panoramio_%281%29.jpg/800px-Porto_Covo_-_Panoramio_%281%29.jpg" alt="Porto Covo" loading="lazy">
+        <span class="loc-badge">🏘️ Fishing Village</span>
+        <span class="loc-km">North · Setúbal District</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 01 · Northern Gateway of the Costa Vicentina</p>
+        <h2 class="loc-name">Porto Covo</h2>
+        <p class="loc-region">📍 Porto Covo, Sines · Alentejo Coast</p>
+        <div class="loc-desc">
+          <p>Porto Covo is the northern gateway to the Costa Vicentina and one of the most picturesque villages on the entire Portuguese coast. Its central square, lined with whitewashed houses with blue windows and a colonial church, is one of the most iconic images of the Alentejo. It's small, human-scaled and completely genuine.</p>
+          <p>From the clifftop to the west there is a stunning view of <strong>Ilha do Pessegueiro</strong> (Peach Tree Island) — an uninhabited islet 400 metres from the shore, with the ruins of a 17th-century fortress. In summer it can be reached by boat; the rest of the year it belongs to cormorants and seagulls.</p>
+          <p>Porto Covo is also the <strong>starting point of the Fishermen's Trail</strong>, the most famous route of the Rota Vicentina, which follows the coastline south to Odeceixe over ~80 magnetic kilometres.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🏰 Ilha do Pessegueiro (by boat)</span>
+          <span class="chip">🥾 Fishermen's Trail starting point</span>
+          <span class="chip">🍽️ Authentic Alentejo cuisine</span>
+          <span class="chip">📸 Cliff-top sunsets</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Porto+Covo+Portugal" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.vagamundos.pt/visitar-sines-e-porto-covo/" target="_blank">📖 Vagamundos Guide</a>
+          <a class="btn btn-g" href="https://rotavicentina.com/en/fishermens-trail/" target="_blank">🥾 Fishermen's Trail</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VILA NOVA DE MILFONTES -->
+    <div class="loc flip" id="milfontes">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Vila_Nova_de_Milfontes_-_Flickr_-_lublub75.jpg/800px-Vila_Nova_de_Milfontes_-_Flickr_-_lublub75.jpg" alt="Vila Nova de Milfontes" loading="lazy">
+        <span class="loc-badge">🏖️ Coastal Town</span>
+        <span class="loc-km">~30 km south of Porto Covo</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 02 · The Princess of the Alentejo</p>
+        <h2 class="loc-name">Vila Nova de Milfontes</h2>
+        <p class="loc-region">📍 Vila Nova de Milfontes · Odemira</p>
+        <div class="loc-desc">
+          <p>Known as the "Princess of the Alentejo", Milfontes is one of the most beloved coastal towns in Portugal and one of the most complete destinations for a family holiday. It sits at the mouth of the River Mira, which creates a calm, warm lagoon — sheltered from Atlantic waves — perfect for children and swimmers who prefer gentler water.</p>
+          <p>The town has a relaxed and authentic energy, with excellent terraces, fresh-fish restaurants, a local market and a genuine resident population — something increasingly rare along the Portuguese coastline.</p>
+          <p>The <strong>Milfontes Castle</strong> — a 16th-century fortress built to defend the river mouth from Berber pirates — dominates the landscape and now operates as a charming boutique hotel. It's one of the most photographed spots on the coast. There are also three distinct beaches within a 10-minute walk from the town centre: Praia de Milfontes, Praia do Farol and Praia das Furnas.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🏰 Castle 16th C. (now a hotel)</span>
+          <span class="chip">🚣 River Mira — canoeing &amp; kayaking</span>
+          <span class="chip">🏖️ 3 beaches walkable from town</span>
+          <span class="chip">🌊 Surf + calm river swimming</span>
+          <span class="chip">🛶 Boat crossings to the beach</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Vila+Nova+de+Milfontes" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.vagamundos.pt/visitar-vila-nova-de-milfontes/" target="_blank">📖 Vagamundos Guide</a>
+          <a class="btn btn-g" href="https://www.visitportugal.com/en/content/vila-nova-de-milfontes" target="_blank">🌐 Visit Portugal</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZAMBUJEIRA DO MAR -->
+    <div class="loc" id="zambujeira">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Praia_de_Zambujeira_do_Mar.jpg/800px-Praia_de_Zambujeira_do_Mar.jpg" alt="Zambujeira do Mar" loading="lazy">
+        <span class="loc-badge">🌿 Wild Cliff Beach</span>
+        <span class="loc-km">~55 km south of Milfontes</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 03 · The Beach of the Black Cliffs</p>
+        <h2 class="loc-name">Zambujeira do Mar</h2>
+        <p class="loc-region">📍 Zambujeira do Mar · Odemira</p>
+        <div class="loc-desc">
+          <p>Zambujeira do Mar is one of the most striking beaches on the entire Portuguese coast. Nestled between towering black schist cliffs, the beach has an end-of-the-world energy that is completely unique — sheltered from the wind, hidden from the world.</p>
+          <p>The village that gives access to it is tiny — just one main street with a few cafés and holiday homes — which preserves the place's rare authenticity. The descent to the beach is via a staircase carved directly into the cliff face. The contrast between the dark rocks and the white sand creates a cinematic setting.</p>
+          <p>Every August, the location is transformed by the <strong>MEO Sudowest Festival</strong>, one of Portugal's largest open-air music festivals — with 40,000 people over 4 days in this isolated corner of the Costa Vicentina.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🖤 Black schist cliffs</span>
+          <span class="chip">🎵 MEO Sudowest Festival (August)</span>
+          <span class="chip">🏄 Advanced surfing</span>
+          <span class="chip">🥾 Fishermen's Trail passes here</span>
+          <span class="chip">🌅 Dramatic sunsets</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Zambujeira+do+Mar+Portugal" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.vagamundos.pt/visitar-zambujeira-do-mar/" target="_blank">📖 Vagamundos Guide</a>
+          <a class="btn btn-g" href="https://meosudowest.pt" target="_blank">🎵 MEO Sudowest Festival</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ODECEIXE -->
+    <div class="loc flip" id="odeceixe">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Praia_de_Odeceixe_%287667131250%29.jpg/800px-Praia_de_Odeceixe_%287667131250%29.jpg" alt="Odeceixe Beach" loading="lazy">
+        <span class="loc-badge">🌊 River + Sea</span>
+        <span class="loc-km">Alentejo / Algarve Border</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 04 · A One-of-a-Kind Natural Phenomenon</p>
+        <h2 class="loc-name">Odeceixe Beach</h2>
+        <p class="loc-region">📍 Odeceixe · Aljezur · Alentejo/Algarve Border</p>
+        <div class="loc-desc">
+          <p>Odeceixe Beach is a phenomenon with no parallel in Portugal. The River Seixe descends from the hills and flows into the Atlantic right at the beach — splitting it into two worlds within the same stretch of sand: on one side, the fresh, calm and warm river water; on the other, the raw waves of the ocean.</p>
+          <p>At low tide it is possible to cross the river on foot and reach a small hidden rocky cove to the north. The cliffs have natural pools formed between the rocks — water sandals are recommended to explore them.</p>
+          <p>This is where the <strong>Fishermen's Trail</strong> ends. The village of Odeceixe is 2 km away — one of the most charming in the Alentejo, with whitewashed houses, windmills on the hilltop and a mountain-village atmosphere that contrasts wonderfully with the sea below.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🏞️ River flows directly into the beach</span>
+          <span class="chip">🥾 End of the Fishermen's Trail</span>
+          <span class="chip">🏄 Surfing for beginners (river side)</span>
+          <span class="chip">🐚 Natural rock pools</span>
+          <span class="chip">🏘️ Historic village 2 km away</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Praia+de+Odeceixe+Portugal" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.vagamundos.pt/aljezur-e-odeceixe-o-que-visitar/" target="_blank">📖 Aljezur &amp; Odeceixe Guide</a>
+          <a class="btn btn-g" href="https://www.surf-forecast.com/breaks/Odeceixe/forecasts/latest" target="_blank">🌊 Surf Forecast</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARRIFANA -->
+    <div class="loc" id="arrifana">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Praia_da_Arrifana_-_Aljezur_-_Portugal_%2815099801637%29.jpg/800px-Praia_da_Arrifana_-_Aljezur_-_Portugal_%2815099801637%29.jpg" alt="Arrifana Beach" loading="lazy">
+        <span class="loc-badge">🧗 Basalt Cliffs</span>
+        <span class="loc-km">~45 min south of Odeceixe</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 05 · The Beach Cradled by Cliffs</p>
+        <h2 class="loc-name">Arrifana Beach</h2>
+        <p class="loc-region">📍 Arrifana · Aljezur</p>
+        <div class="loc-desc">
+          <p>Arrifana is one of the most dramatically beautiful beaches in Portugal. Nestled between black basalt cliffs 40 to 60 metres high, the beach has a sheltered and almost sacred energy. The dark basalt contrasts with the golden sand and turquoise waters in a way that looks like a postcard come to life.</p>
+          <p>At the top of the southern cliff stand the ruins of the <strong>Arrifana Fortress</strong> — a structure of Arab origin from the 8th century, later adapted by the Portuguese. It is worth climbing up before descending to the beach for a full aerial perspective of the cove; it is one of the most photographed views in western Algarve.</p>
+          <p>The village of Arrifana on the plateau above has fresh-fish restaurants at reasonable prices and panoramic views over the whole coast. The beach itself is a firm favourite among surfers, with consistent and well-shaped waves throughout the year.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🏰 Arab fortress ruins (8th century)</span>
+          <span class="chip">🏄 Quality surf year-round</span>
+          <span class="chip">📸 Panoramic view from clifftop</span>
+          <span class="chip">🍽️ Fresh fish restaurants</span>
+          <span class="chip">🌑 Black basalt — unique scenery</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Praia+da+Arrifana+Aljezur" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.vagamundos.pt/aljezur-e-odeceixe-o-que-visitar/" target="_blank">📖 Aljezur Guide</a>
+          <a class="btn btn-g" href="https://www.surf-forecast.com/breaks/Arrifana/forecasts/latest" target="_blank">🌊 Surf Forecast</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BORDEIRA -->
+    <div class="loc flip" id="bordeira">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Praia_da_Bordeira_%2814304624069%29.jpg/800px-Praia_da_Bordeira_%2814304624069%29.jpg" alt="Bordeira Beach" loading="lazy">
+        <span class="loc-badge">🏜️ Giant Dunes</span>
+        <span class="loc-km">~30 min south of Arrifana</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 06 · The Biggest and Most Untamed</p>
+        <h2 class="loc-name">Bordeira Beach</h2>
+        <p class="loc-region">📍 Carrapateira · Aljezur</p>
+        <div class="loc-desc">
+          <p>At 2.7 km long with dunes reaching 20 metres in height, Bordeira Beach is one of the most vast and spectacular beaches in all of Europe. Its scale is hard to describe — you have to see it to understand. Even in the height of August, the space is so generous it never feels crowded.</p>
+          <p>The Carrapateira River crosses the beach from end to end, forming shallow lagoons of warmer-than-sea water — perfect for those who prefer not to face the Atlantic waves. The dunes at the back are an attraction in their own right: running down the sandy slopes is an experience enjoyed by all ages.</p>
+          <p>The <strong>Pontal da Carrapateira Trail</strong> (11 km, circular, free) is one of the best short walks in all of the Algarve: it departs from the village of Carrapateira, passes through Bordeira and Carrapateira Beach, offering views of both and utterly unique cliff scenery.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">📏 2.7 km of beach</span>
+          <span class="chip">🏜️ Dunes up to 20 metres</span>
+          <span class="chip">💧 Warm river lagoons</span>
+          <span class="chip">🥾 Pontal da Carrapateira Trail (11 km)</span>
+          <span class="chip">🪁 Kitesurfing with NW wind</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Praia+da+Bordeira+Carrapateira" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://rotavicentina.com/en/circular-routes/" target="_blank">🥾 Pontal da Carrapateira Trail</a>
+          <a class="btn btn-g" href="https://www.surf-forecast.com/breaks/Carrapateira/forecasts/latest" target="_blank">🌊 Surf Forecast</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMADO -->
+    <div class="loc" id="amado">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Praia_do_Amado_%282%29.jpg/800px-Praia_do_Amado_%282%29.jpg" alt="Amado Beach" loading="lazy">
+        <span class="loc-badge">🏄 Surf Mecca</span>
+        <span class="loc-km">~15 min south of Bordeira</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 07 · The Cathedral of Portuguese Surf</p>
+        <h2 class="loc-name">Amado Beach</h2>
+        <p class="loc-region">📍 Carrapateira · Vila do Bispo</p>
+        <div class="loc-desc">
+          <p>Amado is the quintessential surf beach of the Costa Vicentina. Its direct exposure to the Atlantic, combined with a sandy bottom, delivers well-shaped and consistent waves throughout the year — which is why national and international surf and bodyboard championships are regularly held here.</p>
+          <p>Several surf schools are set up on the beach and at the entrance, offering wetsuit and board rental for all levels, including children. The beach is lifeguarded in summer and parking is free — something rare at Portugal's best surf beaches.</p>
+          <p>Even without going in the water, Amado is worth visiting for its <strong>remarkable geological formations</strong>: the cliff walls display strata from multiple geological eras in different colours and textures, with semi-precious stones sometimes visible in the sand. There is a pleasant café at the entrance serving good pastéis de nata.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🏆 National surf championships</span>
+          <span class="chip">🎓 Surf schools on site</span>
+          <span class="chip">🪨 Remarkable geological formations</span>
+          <span class="chip">🆓 Free parking</span>
+          <span class="chip">☕ Café with pastéis de nata</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Praia+do+Amado+Carrapateira" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.vagamundos.pt/visitar-costa-vicentina-roteiro/" target="_blank">📖 Vagamundos Costa Vicentina</a>
+          <a class="btn btn-g" href="https://www.surf-forecast.com/breaks/Amado/forecasts/latest" target="_blank">🌊 Surf Forecast</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAGRES -->
+    <div class="loc flip" id="sagres">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Fortaleza_de_Sagres_-_Portugal_%2817161804046%29.jpg/800px-Fortaleza_de_Sagres_-_Portugal_%2817161804046%29.jpg" alt="Sagres Fortress" loading="lazy">
+        <span class="loc-badge">🏰 Age of Discovery</span>
+        <span class="loc-km">~45 min south of Amado</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 08 · The Navigators' Headquarters</p>
+        <h2 class="loc-name">Sagres &amp; Sagres Fortress</h2>
+        <p class="loc-region">📍 Sagres · Vila do Bispo · SW tip of the Algarve</p>
+        <div class="loc-desc">
+          <p>Sagres carries immeasurable historical weight. It was here that Prince Henry the Navigator established his famous nautical school in the 15th century — where the explorers who mapped the African coast, discovered Brazil and reached India were trained. Without Sagres, modern history would look very different.</p>
+          <p>The <strong>Sagres Fortress</strong> (open daily, 9:30am–5:30pm) is the main monument. Inside, the famous <strong>Wind Rose</strong> — engraved on the ground with a 43-metre diameter in black and white pebbles — is one of the great historical mysteries of Portugal: nobody knows exactly who built it or when.</p>
+          <p>On the way to the Cape, <strong>Beliche Beach</strong> is a hidden beach tucked between cliffs, reached via a steep staircase, with exceptional turquoise waters — one of the best-kept secrets of the western Algarve.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🏰 Sagres Fortress (15th century)</span>
+          <span class="chip">🧭 Wind Rose — 43 metres across</span>
+          <span class="chip">🏖️ Beliche Beach (hidden gem)</span>
+          <span class="chip">🐦 Migratory bird watching</span>
+          <span class="chip">🕰️ Open 9:30am–5:30pm daily</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Fortaleza+de+Sagres" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.fortalezadesagres.pt" target="_blank">🌐 Official Fortress Website</a>
+          <a class="btn btn-g" href="https://maps.google.com/?q=Praia+do+Beliche+Sagres" target="_blank">🏖️ Beliche Beach</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPE ST. VINCENT -->
+    <div class="loc" id="cabo">
+      <div class="loc-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Farol_do_Cabo_de_S%C3%A3o_Vicente_3.jpg/800px-Farol_do_Cabo_de_S%C3%A3o_Vicente_3.jpg" alt="Cape St. Vincent Lighthouse" loading="lazy">
+        <span class="loc-badge">🌅 End of the World</span>
+        <span class="loc-km">Southwesternmost point of Continental Europe</span>
+      </div>
+      <div class="loc-body">
+        <p class="loc-num">Location 09 · The Final Point of Portugal and Europe</p>
+        <h2 class="loc-name">Cape St. Vincent</h2>
+        <p class="loc-region">📍 Cabo de São Vicente · Sagres · Vila do Bispo</p>
+        <div class="loc-desc">
+          <p>The southwesternmost point of Continental Europe — where the land ends and the ocean begins without limit. The Romans called it <em>Promontorium Sacrum</em>, the Sacred Promontory, believing the gods dwelled here. Medieval navigators called it simply "the end of the world" — and from this very point they set sail into the unknown.</p>
+          <p>The black cliffs plunge 75 metres vertically into the Atlantic. The wind is almost always strong, even in the height of summer. The horizon stretches landless all the way to America. And when the setting sun falls on the ocean, it creates a spectacle of light and colour that is, genuinely, one of the most breathtaking moments Portugal has to offer.</p>
+          <p>The <strong>St. Vincent Lighthouse</strong> (built in 1846) is one of the most powerful in Europe — its beam is visible from 60 nautical miles away. At the small market beside the lighthouse, handcrafted woollen jumpers are a popular buy, because even in August the wind at the Cape cuts through you.</p>
+        </div>
+        <div class="loc-chips">
+          <span class="chip">🌍 Southwesternmost point of Continental Europe</span>
+          <span class="chip">💡 Lighthouse (1846) — visible for 111 km</span>
+          <span class="chip">🌅 Absolutely unforgettable sunsets</span>
+          <span class="chip">🧣 Artisan wool market</span>
+          <span class="chip">🐦 Major bird migration route</span>
+        </div>
+        <div class="loc-links">
+          <a class="btn btn-p" href="https://maps.google.com/?q=Cabo+de+São+Vicente+Sagres+Portugal" target="_blank">📍 Google Maps</a>
+          <a class="btn btn-o" href="https://www.visitportugal.com/en/content/cabo-de-sao-vicente" target="_blank">🌐 Visit Portugal</a>
+          <a class="btn btn-g" href="https://en.wikipedia.org/wiki/Cape_St._Vincent,_Portugal" target="_blank">📚 Wikipedia</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec sec-alt" id="dicas">
+  <div class="sec-label"><span>Practical Information</span></div>
+  <h2 class="sec-h">Before you go — the essentials</h2>
+  <p class="sec-sub">Everything you need to know to make the most of the Costa Vicentina.</p>
+  <div class="tips-grid">
+    <div class="tip"><div class="tip-ico">🗓️</div><h3>Best Time to Visit</h3><p><strong>May–June and September–October</strong> are ideal: guaranteed sunshine, fewer crowds, calmer sea. July–August is hotter but beaches fill up. Winter leaves it almost deserted — and even more dramatic.</p></div>
+    <div class="tip"><div class="tip-ico">🚗</div><h3>Getting There</h3><p>A car is essential — there is no adequate public transport between beaches. From Lisbon: ~3h to Porto Covo, ~3.5h to Odeceixe, ~4h to Sagres. The IC4 and N120 cover the entire coast.</p></div>
+    <div class="tip"><div class="tip-ico">🌊</div><h3>The Atlantic Ocean</h3><p>This Atlantic is rougher than the south Algarve. Currents can be strong. <strong>Always respect the flag system</strong> (green/yellow/red) and the lifeguards. Sea temperature 17–21°C in summer.</p></div>
+    <div class="tip"><div class="tip-ico">🏨</div><h3>Where to Stay</h3><p>Options for every budget: nature campsites, rural houses, hostels (Sagres/Aljezur) and boutique hotels. Book well in advance for July/August. <br><a href="https://www.vagamundos.pt/melhores-hoteis-costa-vicentina/" target="_blank">→ Hotels guide (Vagamundos)</a></p></div>
+    <div class="tip"><div class="tip-ico">🍽️</div><h3>What to Eat</h3><p>Cuisine that blends fresh fish and seafood with Alentejo flavours. Don't miss: barnacles, clams, sea bass, cataplana stew. In Aljezur try the <strong>local sweet potato</strong> — a protected designation of origin product.</p></div>
+    <div class="tip"><div class="tip-ico">🥾</div><h3>Trails &amp; Hikes</h3><p>The official website has all routes with free GPX maps to download. Trails range from 8 km to 230 km for all levels of fitness. <br><a href="https://rotavicentina.com/en/" target="_blank">→ rotavicentina.com</a></p></div>
+  </div>
+</section>
+
+<section class="reading">
+  <h2>📚 All sources and further reading</h2>
+  <div class="reading-grid">
+    <a class="read-link" href="https://www.vagamundos.pt/visitar-costa-vicentina-roteiro/" target="_blank"><span>🗺</span> Costa Vicentina Itinerary — Vagamundos</a>
+    <a class="read-link" href="https://www.vagamundos.pt/guia-rota-vicentina/" target="_blank"><span>🥾</span> Complete Rota Vicentina Guide</a>
+    <a class="read-link" href="https://www.vagamundos.pt/praias-costa-vicentina-alentejana/" target="_blank"><span>🏖️</span> Best Beaches — Costa Vicentina</a>
+    <a class="read-link" href="https://www.vagamundos.pt/melhores-hoteis-costa-vicentina/" target="_blank"><span>🏨</span> Best Hotels — Costa Vicentina</a>
+    <a class="read-link" href="https://www.vagamundos.pt/aljezur-e-odeceixe-o-que-visitar/" target="_blank"><span>📍</span> Aljezur &amp; Odeceixe Guide</a>
+    <a class="read-link" href="https://www.vagamundos.pt/visitar-vila-nova-de-milfontes/" target="_blank"><span>🏘️</span> Vila Nova de Milfontes Guide</a>
+    <a class="read-link" href="https://www.vagamundos.pt/visitar-zambujeira-do-mar/" target="_blank"><span>🌿</span> Zambujeira do Mar Guide</a>
+    <a class="read-link" href="https://www.vagamundos.pt/visitar-sines-e-porto-covo/" target="_blank"><span>⚓</span> Sines &amp; Porto Covo Guide</a>
+    <a class="read-link" href="https://rotavicentina.com/en/" target="_blank"><span>🗺</span> Rota Vicentina Official Website</a>
+    <a class="read-link" href="https://www.icnf.pt/portal/naturaclas/ap/p-nat/pnsacv" target="_blank"><span>🌳</span> Natural Park — ICNF Official</a>
+    <a class="read-link" href="https://www.visitportugal.com/en/destinos/alentejo/costa-vicentina" target="_blank"><span>🌐</span> Visit Portugal — Costa Vicentina</a>
+    <a class="read-link" href="https://www.fortalezadesagres.pt" target="_blank"><span>🏰</span> Sagres Fortress Official Website</a>
+  </div>
+</section>
+
+<footer>
+  <p>Costa Vicentina · Southwest Alentejo and Vicentine Coast Natural Park · Protected since 1995</p>
+  <p style="margin-top:8px">Based on: <a href="https://www.vagamundos.pt/guia-rota-vicentina/" target="_blank">vagamundos.pt/guia-rota-vicentina</a> &amp; <a href="https://www.vagamundos.pt/visitar-costa-vicentina-roteiro/" target="_blank">vagamundos.pt/visitar-costa-vicentina-roteiro</a></p>
+</footer>
+</body>
+</html>
